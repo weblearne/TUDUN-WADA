@@ -1,0 +1,26 @@
+use html, css and js and make it responsive across diffrence device sacle
+
+1. Homepage
+Introduction to Tudun Wada LGA
+High-quality images
+Latest news & updates
+Search bar
+
+on the nav bar should ionclude 
+
+should be in dropdown over each other 
+2. Government Services
+Birth & death registration
+Business permits & licensing
+Land use & property management
+Tax payment & collection services
+
+3. Departments & Ministries
+List of government departments
+Contact details of key officials
+Services offered
+
+4. Projects & Development
+Ongoing & completed projects
+Future development plans
+Budget & expenditures
