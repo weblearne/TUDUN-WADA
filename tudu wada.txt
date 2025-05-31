@@ -24,3 +24,5 @@ Services offered
 Ongoing & completed projects
 Future development plans
 Budget & expenditures
+
+add a transparent bg img where i can place our lga secretariat img before our leaders img  and on the our leadership add a image tag where i can add all leader picture here is the code

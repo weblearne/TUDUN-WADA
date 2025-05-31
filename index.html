@@ -3,1175 +3,1042 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tudun Wada Local Government Area</title>
+    <title>Tudun Wada Dankadai Local Government Area</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        /* Modern Color Scheme */
         :root {
-            --primary: #1a5276;  /* Deep blue */
-            --secondary: #117864; /* Teal green */
-            --accent: #f39c12;   /* Orange */
-            --light: #f8f9fa;
-            --dark: #2c3e50;
-            --text: #333;
-            --white: #ffffff;
-            --gray: #95a5a6;
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
             --success: #27ae60;
             --warning: #f39c12;
-            --danger: #e74c3c;
+            --info: #17a2b8;
+            --white: #ffffff;
+            --light: #f8f9fa;
+            --dark: #343a40;
+            --text: #2c3e50;
+            --border: #dee2e6;
+            --sidebar-width: 280px;
         }
 
-        /* Base Styles */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        
+
+        .form-group {
+    margin-bottom: 15px;
+}
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    outline: none;
+    font-size: 14px;
+}
+.form-group textarea {
+    resize: vertical;
+}
+
         body {
-            background-color: var(--light);
-            color: var(--text);
+            font-family: 'Arial', sans-serif;
             line-height: 1.6;
+            color: var(--text);
+            background: linear-gradient(135deg, rgba(44, 62, 80, 0.1) 0%, rgba(52, 152, 219, 0.1) 100%);
+            min-height: 100vh;
         }
-        
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 15px;
-        }
-        
-        img {
-            max-width: 100%;
-            height: auto;
-        }
-        
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-        
-        /* Header Styles */
-        header {
-            background-color: var(--primary);
-            color: var(--white);
-            padding: 15px 0;
-            position: sticky;
+
+        /* Sidebar Navigation */
+        .sidebar {
+            position: fixed;
+            left: 0;
             top: 0;
+            width: var(--sidebar-width);
+            height: 100vh;
+            background: linear-gradient(180deg, var(--primary) 0%, #34495e 100%);
+            color: var(--white);
             z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            overflow-y: auto;
+            transition: transform 0.3s ease;
         }
-        
-        .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .logo img {
-            height: 60px;
-        }
-        
-        .logo h1 {
-            font-size: 1.5rem;
-            font-weight: 600;
-        }
-        
-        /* Navigation */
-        nav {
-            background-color: var(--secondary);
-            position: relative;
-        }
-        
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .menu-icon {
-            display: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: var(--white);
-            padding: 15px;
-        }
-        
-        .nav-menu {
-            display: flex;
-            list-style: none;
-        }
-        
-        .nav-menu li {
-            position: relative;
-        }
-        
-        .nav-menu li a {
-            display: block;
-            color: var(--white);
-            padding: 15px 20px;
-            transition: all 0.3s ease;
-        }
-        
-        .nav-menu li a:hover {
-            background-color: rgba(255, 255, 255, 0.1);
-        }
-        
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: var(--secondary);
-            min-width: 200px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-            z-index: 1;
-            border-top: 3px solid var(--accent);
-        }
-        
-        .dropdown-content a {
-            color: var(--white);
-            padding: 12px 20px;
-            display: block;
+
+        .sidebar-header {
+            padding: 20px;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .dropdown-content a:hover {
-            background-color: rgba(255, 255, 255, 0.1);
-        }
-        
-        .nav-menu li:hover .dropdown-content {
-            display: block;
-        }
-        
-        /* Search Bar */
-        .search-container {
-            display: flex;
-            align-items: center;
-            margin-left: auto;
-            margin-right: 15px;
-        }
-        
-        .search-bar {
-            display: flex;
-            background-color: var(--white);
-            border-radius: 4px;
-            overflow: hidden;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-        
-        .search-bar input {
-            padding: 10px 15px;
-            border: none;
-            outline: none;
-            width: 200px;
-        }
-        
-        .search-bar button {
-            background-color: var(--primary);
-            color: var(--white);
-            border: none;
-            padding: 0 15px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        
-        .search-bar button:hover {
-            background-color: var(--dark);
-        }
-        
-        /* Hero Section */
-        .hero {
-            height: 500px;
-            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://source.unsplash.com/random/1200x500/?nigeria,city');
-            background-size: cover;
-            background-position: center;
-            color: var(--white);
-            display: flex;
-            align-items: center;
             text-align: center;
         }
-        
-        .hero-content {
-            max-width: 800px;
+
+        .sidebar-header img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+
+        .sidebar-header h1 {
+            font-size: 16px;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        .sidebar-menu {
+            list-style: none;
+            padding: 20px 0;
+        }
+
+        .sidebar-menu li {
+            position: relative;
+        }
+
+        .sidebar-menu a {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            color: var(--white);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border-left: 3px solid transparent;
+        }
+
+        .sidebar-menu a:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-left-color: var(--secondary);
+        }
+
+        .sidebar-menu a i {
+            margin-right: 12px;
+            width: 20px;
+            text-align: center;
+        }
+
+        .sidebar-menu .dropdown-toggle::after {
+            content: '\f107';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            margin-left: auto;
+            transition: transform 0.3s ease;
+        }
+
+        .sidebar-menu .dropdown.active .dropdown-toggle::after {
+            transform: rotate(180deg);
+        }
+
+        .sidebar-dropdown {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .sidebar-dropdown.active {
+            max-height: 500px;
+        }
+
+        .sidebar-dropdown a {
+            padding: 12px 20px 12px 50px;
+            font-size: 14px;
+            border-left: none;
+        }
+
+        /* Mobile sidebar toggle */
+        .sidebar-toggle {
+            display: none;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1001;
+            background:;
+            color: var(--white);
+            border: none;
+            padding: 12px;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-left: var(--sidebar-width);
+            min-height: 100vh;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:rgba(255,255,255,0.8)"/><stop offset="100%" style="stop-color:rgba(240,248,255,0.8)"/></linearGradient></defs><rect width="100%" height="100%" fill="url(%23bg)"/></svg>') no-repeat center center;
+            background-size: cover;
+            position: relative;
+        }
+
+        .main-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.9);
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
-        
-        .hero h2 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
-        }
-        
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 30px;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-        }
-        
-        .btn {
-            display: inline-block;
-            background-color: var(--accent);
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
             color: var(--white);
-            padding: 12px 30px;
-            border-radius: 4px;
-            font-weight: 600;
-            transition: all 0.3s;
-            border: none;
-            cursor: pointer;
-        }
-        
-        .btn:hover {
-            background-color: #e67e22;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-        
-        /* Section Styles */
-        .section {
-            padding: 60px 0;
-        }
-        
-        .section-title {
-            position: relative;
+            padding: 40px 0;
             text-align: center;
-            margin-bottom: 40px;
-            color: var(--primary);
+            position: relative;
+            overflow: hidden;
         }
-        
-        .section-title:after {
+
+        .header::before {
             content: '';
-            display: block;
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="1" fill="rgba(255,255,255,0.1)"/></svg>') repeat;
+            animation: float 20s infinite linear;
+        }
+
+        @keyframes float {
+            0% { transform: translateX(-50px) translateY(-50px); }
+            100% { transform: translateX(50px) translateY(50px); }
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        /* Leadership Section */
+        .leadership-section {
+            padding: 60px 0;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(248, 249, 250, 0.9) 100%);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: var(--primary);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
             width: 80px;
             height: 3px;
-            background-color: var(--accent);
-            margin: 15px auto;
+            background: var(--secondary);
         }
-        
-        /* Card Grid Layout */
+
+        .leadership-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .leader-card {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .leader-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+        }
+
+        .leader-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .leader-image {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 3rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .leader-name {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+
+        .leader-title {
+            color: var(--secondary);
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+
+        .leader-info {
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        /* Card Styles */
+        .card {
+            background: var(--white);
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
         .card-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
+            margin-top: 40px;
         }
-        
-        /* Card Styles */
-        .card {
-            background-color: var(--white);
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-        }
-        
-        .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-        }
-        
+
         .card-img {
+            position: relative;
             height: 200px;
             overflow: hidden;
         }
-        
+
         .card-img img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.5s;
+            transition: transform 0.3s ease;
         }
-        
+
         .card:hover .card-img img {
-            transform: scale(1.1);
+            transform: scale(1.05);
         }
-        
+
         .card-content {
-            padding: 20px;
+            padding: 25px;
         }
-        
+
         .card-content h3 {
-            font-size: 1.2rem;
-            margin-bottom: 10px;
             color: var(--primary);
-        }
-        
-        .card-content p {
             margin-bottom: 15px;
-            color: var(--text);
+            font-size: 1.3rem;
         }
-        
-        .read-more {
-            color: var(--accent);
-            font-weight: 600;
-            display: inline-block;
-            transition: color 0.3s;
+
+        .card-content p {
+            color: #666;
+            margin-bottom: 15px;
+            line-height: 1.6;
         }
-        
-        .read-more:hover {
-            color: var(--secondary);
-            text-decoration: underline;
-        }
-        
-        /* Status Badges */
+
         .badge {
             display: inline-block;
             padding: 4px 12px;
             border-radius: 20px;
-            font-size: 0.8rem;
+            font-size: 12px;
             font-weight: 600;
-            text-transform: uppercase;
+            margin-bottom: 10px;
         }
-        
+
         .badge-ongoing {
-            background-color: var(--warning);
-            color: var(--dark);
+            background: var(--info);
+            color: var(--white);
         }
-        
+
         .badge-completed {
-            background-color: var(--success);
+            background: var(--success);
             color: var(--white);
         }
-        
+
         .badge-planned {
-            background-color: var(--primary);
+            background: var(--warning);
             color: var(--white);
         }
-        
+
         /* Service Cards */
         .service-card {
             text-align: center;
-            padding: 30px 20px;
+            padding: 30px;
         }
-        
+
         .service-icon {
-            font-size: 2.5rem;
-            color: var(--accent);
-            margin-bottom: 20px;
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 2rem;
         }
-        
+
+        /* Button Styles */
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 25px;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 60px 0;
+        }
+
+        .section:nth-child(even) {
+            background: rgba(248, 249, 250, 0.7);
+        }
+
         /* Contact Info */
         .contact-info {
             margin-top: 15px;
         }
-        
+
         .contact-info p {
-            margin-bottom: 8px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
+            margin: 8px 0;
+            font-size: 14px;
         }
-        
+
         .contact-info i {
-            color: var(--accent);
-            width: 20px;
-            text-align: center;
+            margin-right: 8px;
+            color: var(--secondary);
         }
-        
+
         /* Footer */
-        footer {
-            background-color: var(--dark);
+        .footer {
+            background: linear-gradient(135deg, var(--primary) 0%, #34495e 100%);
             color: var(--white);
             padding: 50px 0 20px;
         }
-        
+
         .footer-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
-            margin-bottom: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
         }
-        
+
         .footer-section h3 {
-            font-size: 1.2rem;
             margin-bottom: 20px;
-            position: relative;
-            padding-bottom: 10px;
             color: var(--white);
         }
-        
-        .footer-section h3:after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 50px;
-            height: 2px;
-            background-color: var(--accent);
-        }
-        
-        .footer-section p {
-            margin-bottom: 10px;
-            color: var(--gray);
-        }
-        
+
         .footer-section ul {
             list-style: none;
         }
-        
+
         .footer-section ul li {
             margin-bottom: 10px;
         }
-        
-        .footer-section ul li a {
-            color: var(--gray);
-            transition: color 0.3s;
+
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s ease;
         }
-        
-        .footer-section ul li a:hover {
+
+        .footer-section a:hover {
             color: var(--white);
         }
-        
+
         .social-links {
             display: flex;
             gap: 15px;
             margin-top: 15px;
         }
-        
+
         .social-links a {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
             width: 40px;
             height: 40px;
-            background-color: var(--primary);
-            color: var(--white);
+            background: rgba(255, 255, 255, 0.1);
             border-radius: 50%;
-            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
         }
-        
+
         .social-links a:hover {
-            background-color: var(--accent);
-            transform: translateY(-3px);
+            background: var(--secondary);
+            transform: translateY(-2px);
         }
-        
+
         .bottom-footer {
             text-align: center;
+            margin-top: 40px;
             padding-top: 20px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
-            font-size: 0.9rem;
-            color: var(--gray);
         }
-        
-        /* Responsive Styles */
-        @media (max-width: 992px) {
-            .hero h2 {
-                font-size: 2.2rem;
-            }
-            
-            .card-grid {
-                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            }
+
+        /* Search Bar */
+        .search-bar {
+            display: flex;
+            margin-top: 20px;
         }
-        
+
+        .search-bar input {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 25px 0 0 25px;
+            outline: none;
+        }
+
+        .search-bar button {
+            padding: 12px 20px;
+            background: var(--secondary);
+            color: var(--white);
+            border: none;
+            border-radius: 0 25px 25px 0;
+            cursor: pointer;
+        }
+
+        /* Responsive Design */
         @media (max-width: 768px) {
-            .header-container {
-                flex-direction: column;
-                text-align: center;
+            .sidebar {
+                transform: translateX(-100%);
             }
-            
-            .logo {
-                margin-bottom: 15px;
-                justify-content: center;
+
+            .sidebar.active {
+                transform: translateX(0);
             }
-            
-            .menu-icon {
+
+            .sidebar-toggle {
                 display: block;
             }
-            
-            .nav-container {
-                flex-direction: column;
+
+            .main-content {
+                margin-left: 0;
             }
-            
-            .nav-menu {
-                display: none;
-                flex-direction: column;
-                width: 100%;
-                padding: 0;
-            }
-            
-            .nav-menu.active {
-                display: flex;
-            }
-            
-            .dropdown-content {
-                position: static;
-                width: 100%;
-                box-shadow: none;
-                display: none;
-            }
-            
-            .nav-menu li:hover .dropdown-content {
-                display: none;
-            }
-            
-            .nav-menu li.active .dropdown-content {
-                display: block;
-            }
-            
-            .search-container {
-                margin: 15px 0;
-                width: 100%;
-                justify-content: center;
-            }
-            
-            .search-bar {
-                width: 100%;
-                max-width: 400px;
-            }
-            
-            .search-bar input {
-                width: 100%;
-            }
-            
-            .hero {
-                height: 400px;
-            }
-            
-            .hero h2 {
+
+            .header h1 {
                 font-size: 2rem;
             }
-            
-            .hero p {
-                font-size: 1rem;
+
+            .section-title {
+                font-size: 2rem;
             }
-        }
-        
-        @media (max-width: 576px) {
-            .hero {
-                height: 350px;
+
+            .leadership-grid {
+                grid-template-columns: 1fr;
             }
-            
-            .hero h2 {
-                font-size: 1.8rem;
-            }
-            
-            .section {
-                padding: 40px 0;
-            }
-            
+
             .card-grid {
                 grid-template-columns: 1fr;
             }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Scroll to top button */
+        .scroll-top-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            color: var(--white);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 999;
+        }
+
+        .scroll-top-btn.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .read-more {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            transition: color 0.3s ease;
+        }
+
+        .read-more:hover {
+            color: var(--secondary);
         }
     </style>
-    <!-- Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <div class="container header-container">
-            <div class="logo">
-                <img src="logo.jpeg" alt="Tudun Wada LGA Logo">
-                <h1>Tudun Wada Dankadai Local Government Area</h1>
-            </div>
-        </div>
-    </header>
-    
-    <!-- Navigation -->
-    <nav>
-        <div class="container nav-container">
-            <div class="menu-icon" id="menuToggle">
-                <i class="fas fa-bars"></i>
-            </div>
-            <ul class="nav-menu" id="navMenu">
-                <li><a href="#"><i class="fas fa-home"></i> Home</a></li>
-                <li>
-                    <a href="#"><i class="fas fa-landmark"></i> Government Services <i class="fas fa-chevron-down"></i></a>
-                    <div class="dropdown-content">
-                        <a href="#"><i class="fas fa-baby"></i> Birth & Death Registration</a>
-                        <a href="#"><i class="fas fa-briefcase"></i> Business Permits & Licensing</a>
-                        <a href="#"><i class="fas fa-house-user"></i> Land Use & Property Management</a>
-                        <a href="#"><i class="fas fa-money-bill-wave"></i> Tax Payment & Collection Services</a>
-                    </div>
-                </li>
-                <li>
-                    <a href="#"><i class="fas fa-building"></i> Departments & Ministries <i class="fas fa-chevron-down"></i></a>
-                    <div class="dropdown-content">
-                        <a href="#"><i class="fas fa-users-cog"></i> Administration</a>
-                        <a href="#"><i class="fas fa-coins"></i> Finance</a>
-                        <a href="#"><i class="fas fa-hospital"></i> Health</a>
-                        <a href="#"><i class="fas fa-school"></i> Education</a>
-                        <a href="#"><i class="fas fa-tractor"></i> Agriculture</a>
-                    </div>
-                </li>
-                <li>
-                    <a href="#"><i class="fas fa-project-diagram"></i> Projects & Development <i class="fas fa-chevron-down"></i></a>
-                    <div class="dropdown-content">
-                        <a href="#"><i class="fas fa-hammer"></i> Ongoing Projects</a>
-                        <a href="#"><i class="fas fa-check-circle"></i> Completed Projects</a>
-                        <a href="#"><i class="fas fa-lightbulb"></i> Future Development Plans</a>
-                        <a href="#"><i class="fas fa-calculator"></i>Indegine Form</a>
-                    </div>
-                </li>
-                <li><a href="about.html"><i class="fas fa-info-circle"></i> About Us</a></li>
-                <li><a href="contact_us.html"><i class="fas fa-envelope"></i> Contact</a></li>
-            </ul>
-            <div class="search-container">
-                <div class="search-bar">
-                    <input type="text" placeholder="Search services, departments...">
-                    <button type="submit"><i class="fas fa-search"></i></button>
-                </div>
-            </div>
-        </div>
-    </nav>
-    
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <h2>Welcome to Tudun Wada Dankadai Local Government Area</h2>
-            <p>Serving our community with excellence, transparency, and dedication to improve the quality of life for all residents.</p>
-            <button class="btn">Explore Our Services</button>
-        </div>
-    </section>
-    
-    <!-- News Section -->
-    <section class="section">
-        <div class="container">
-            <h2 class="section-title">Latest News & Updates</h2>
-            <div class="card-grid">
-                <div class="card">
-                    <div class="card-img">
-                        <img src="water.jpg" alt=" water Project">
-                    </div>
-                    <div class="card-content">
-                        <div class="badge badge-ongoing">New</div>
-                        <h3>New Water Project Launched</h3>
-                        <p>The local government has launched a new water project that will provide clean drinking water to over 5,000 residents in rural communities.</p>
-                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-img">
-                        <img src="project2.jpg" alt="Health Clinic">
-                    </div>
-                    <div class="card-content">
-                        <div class="badge badge-ongoing">Announcement</div>
-                        <h3>Community Health Week Announced</h3>
-                        <p>The health department is organizing a community health week starting May 10th with free medical check-ups and vaccinations.</p>
-                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-img">
-                        <img src="cp1.jpg" alt="Road Construction">
-                    </div>
-                    <div class="card-content">
-                        <div class="badge badge-completed">Completed</div>
-                        <h3>Road Rehabilitation Project Completed</h3>
-                        <p>The long-awaited road rehabilitation project connecting major communities has been successfully completed ahead of schedule.</p>
-                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Services Section -->
-    <section class="section" style="background-color: #f5f7fa;">
-        <div class="container">
-            <h2 class="section-title">Government Services</h2>
-            <div class="card-grid">
-                <div class="card service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-baby"></i>
-                    </div>
-                    <h3>Birth & Death Registration</h3>
-                    <p>Register births and deaths, obtain certificates and maintain official records of vital events in our community.</p>
-                    <button class="btn" style="margin-top: 15px;">Learn More</button>
-                </div>
-                <div class="card service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-briefcase"></i>
-                    </div>
-                    <h3>Business Permits & Licensing</h3>
-                    <p>Apply for new business permits, renew existing licenses, and get information about local business regulations.</p>
-                    <button class="btn" style="margin-top: 15px;">Learn More</button>
-                </div>
-                <div class="card service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-house-user"></i>
-                    </div>
-                    <h3>Land Use & Property Management</h3>
-                    <p>Access services related to land acquisition, property taxes, zoning regulations, and development permits.</p>
-                    <button class="btn" style="margin-top: 15px;">Learn More</button>
-                </div>
-                <div class="card service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-money-bill-wave"></i>
-                    </div>
-                    <h3>Tax Payment & Collection</h3>
-                    <p>Pay local taxes, check tax status, and understand tax obligations for residents and businesses in our LGA.</p>
-                    <button class="btn" style="margin-top: 15px;">Pay Online</button>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Departments Section -->
-    <section class="section">
-        <div class="container">
-            <h2 class="section-title">Departments & Ministries</h2>
-            <div class="card-grid">
-                <div class="card">
-                    <div class="card-img">
-                        <img src="ADD (4).jpg" alt="Administration Department">
-                    </div>
-                    <div class="card-content">
-                        <h3>Administration Department</h3>
-                        <p>Responsible for the overall coordination of government activities, personnel management, and public relations.</p>
-                        <div class="contact-info">
-                            <p><i class="fas fa-user-tie"></i> <strong>Head:</strong> Mr. Ibrahim Mohammed</p>
-                            <p><i class="fas fa-envelope"></i> <strong>Email:</strong> admin@tudunwada.gov.ng</p>
-                            <p><i class="fas fa-phone"></i> <strong>Phone:</strong> +234-XXX-XXXX-XXX</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-img">
-                        <img src="ADD (2).jpg" alt="Health Department">
-                    </div>
-                    <div class="card-content">
-                        <h3>Health Department</h3>
-                        <p>Oversees public health initiatives, healthcare facilities, sanitation programs, and disease prevention efforts.</p>
-                        <div class="contact-info">
-                            <p><i class="fas fa-user-md"></i> <strong>Head:</strong> Dr. Amina Yusuf</p>
-                            <p><i class="fas fa-envelope"></i> <strong>Email:</strong> health@tudunwada.gov.ng</p>
-                            <p><i class="fas fa-phone"></i> <strong>Phone:</strong> +234-XXX-XXXX-XXX</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-img">
-                        <img src="ADD (5).jpg" alt="Education Department">
-                    </div>
-                    <div class="card-content">
-                        <h3>Education Department</h3>
-                        <p>Manages local schools, educational programs, teacher development, and student support services.</p>
-                        <div class="contact-info">
-                            <p><i class="fas fa-chalkboard-teacher"></i> <strong>Head:</strong> Mrs. Fatima Aliyu</p>
-                            <p><i class="fas fa-envelope"></i> <strong>Email:</strong> education@tudunwada.gov.ng</p>
-                            <p><i class="fas fa-phone"></i> <strong>Phone:</strong> +234-XXX-XXXX-XXX</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Projects Section -->
-    <section class="section" style="background-color: #f5f7fa;">
-        <div class="container">
-            <h2 class="section-title">Projects & Development</h2>
-            <div class="card-grid">
-                <div class="card">
-                    <div class="card-img">
-                        <img src="https://source.unsplash.com/random/400x200/?road,construction" alt="Road Construction">
-                        <div class="badge badge-ongoing" style="position: absolute; top: 15px; right: 15px;">Ongoing</div>
-                    </div>
-                    <div class="card-content">
-                        <h3>Tudun Wada - Karaye Road Expansion</h3>
-                        <p>Expansion of the main road connecting Tudun Wada to neighboring Karaye to improve transportation and boost economic activities.</p>
-                        <div class="contact-info">
-                            <p><i class="fas fa-money-bill-wave"></i> <strong>Budget:</strong> ₦500 Million</p>
-                            <p><i class="fas fa-calendar-alt"></i> <strong>Timeline:</strong> Jan 2025 - Dec 2025</p>
-                            <p><i class="fas fa-hard-hat"></i> <strong>Contractor:</strong> ABC Construction Ltd.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-img">
-                        <img src="https://source.unsplash.com/random/400x200/?hospital,building" alt="Health Center">
-                        <div class="badge badge-completed" style="position: absolute; top: 15px; right: 15px;">Completed</div>
-                    </div>
-                    <div class="card-content">
-                        <h3>Community Health Center Renovation</h3>
-                        <p>Renovation and equipment upgrade of the central community health center to improve healthcare delivery and service quality.</p>
-                        <div class="contact-info">
-                            <p><i class="fas fa-money-bill-wave"></i> <strong>Budget:</strong> ₦200 Million</p>
-                            <p><i class="fas fa-calendar-check"></i> <strong>Completed:</strong> March 2025</p>
-                            <p><i class="fas fa-hard-hat"></i> <strong>Contractor:</strong> Health Infrastructure Ltd.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-img">
-                        <img src="https://source.unsplash.com/random/400x200/?water,well" alt="Water Project">
-                        <div class="badge badge-planned" style="position: absolute; top: 15px; right: 15px;">Planned</div>
-                    </div>
-                    <div class="card-content">
-                        <h3>Rural Water Supply Extension</h3>
-                        <p>Extension of pipe-borne water to five rural communities to improve access to clean water and reduce waterborne diseases.</p>
-                        <div class="contact-info">
-                            <p><i class="fas fa-money-bill-wave"></i> <strong>Budget:</strong> ₦350 Million</p>
-                            <p><i class="fas fa-calendar-alt"></i> <strong>Timeline:</strong> June 2025 - June 2026</p>
-                            <p><i class="fas fa-info-circle"></i> <strong>Status:</strong> Final budget review</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- E-Governance Section -->
-    <section class="section">
-        <div class="container">
-            <h2 class="section-title">E-Governance & Online Services</h2>
-            <div class="card-grid">
-                <div class="card" style="text-align: center; padding: 30px;">
-                    <div class="service-icon">
-                        <i class="fas fa-file-alt fa-3x"></i>
-                    </div>
-                    <h3>Online Forms & Applications</h3>
-                    <p>Access and submit government forms for permits, grants, employment, and other services online.</p>
-                    <button class="btn" style="margin-top: 20px;">View Forms</button>
-                </div>
-                <div class="card" style="text-align: center; padding: 30px;">
-                    <div class="service-icon">
-                        <i class="fas fa-credit-card fa-3x"></i>
-                    </div>
-                    <h3>Online Payments</h3>
-                    <p>Pay taxes, bills, and other government fees securely through our online payment portal.</p>
-                    <button class="btn" style="margin-top: 20px;">Make Payment</button>
-                </div>
-                <div class="card" style="text-align: center; padding: 30px;">
-                    <div class="service-icon">
-                        <i class="fas fa-comments fa-3x"></i>
-                    </div>
-                    <h3>Complaints & Feedback</h3>
-                    <p>Submit complaints, suggestions, or feedback about government services and community issues.</p>
-                    <button class="btn" style="margin-top: 20px;">Submit Feedback</button>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-container">
-                <div class="footer-section">
-                    <h3>Contact Us</h3>
-                    <p><i class="fas fa-map-marker-alt"></i> Local Government Secretariat, Tudun Wada, Kano State, Nigeria</p>
-                    <p><i class="fas fa-phone"></i> +234-XXX-XXXX-XXX</p>
-                    <p><i class="fas fa-envelope"></i> info@tudunwada.gov.ng</p>
-                    <p><i class="fas fa-clock"></i> Mon-Fri: 8:00 AM - 4:00 PM</p>
-                </div>
-                <div class="footer-section">
-                    <h3>Quick Links</h3>
-                    <ul>
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> Home</a></li>
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> Government Services</a></li>
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> Departments</a></li>
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> Projects</a></li>
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> News & Updates</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h3>Important Resources</h3>
-                    <ul>
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> Budget Reports</a></li>
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> Government Policies</a></li>
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> Public Notices</a></li>
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> Tenders & Bids</a></li>
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> Employment Opportunities</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h3>Connect With Us</h3>
-                    <p>Follow us on social media for updates and announcements:</p>
-                    <div class="social-links">
-                        <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
-                        <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
-                        <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                    <p style="margin-top: 20px;">Subscribe to our newsletter:</p>
-                    <div class="search-bar" style="margin-top: 10px;">
-                        <input type="email" placeholder="Your email address">
-                        <button type="submit"><i class="fas fa-paper-plane"></i></button>
-                    </div>
-                </div>
-            </div>
-            <div class="bottom-footer">
-                <p>&copy; 2025 Tudun Wada Local Government Area. All Rights Reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
-            </div>
-        </div>
-    </footer>
-    
-   <script>
-// Mobile Menu Toggle
-document.getElementById('menuToggle').addEventListener('click', function() {
-    document.getElementById('navMenu').classList.toggle('active');
-    this.querySelector('i').classList.toggle('fa-times');
-    this.querySelector('i').classList.toggle('fa-bars');
-});
+    <!-- Sidebar Toggle Button -->
+    <button class="sidebar-toggle" id="sidebarToggle">
+        <i class="fas fa-bars"><img src=""></i>
+    </button>
 
-// Mobile Dropdown Toggle
-const navItems = document.querySelectorAll('.nav-menu > li');
+    <!-- Sidebar Navigation -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <img src="logo.jpeg" alt="Tudun Wada LGA Logo">
+            <h1>Tudun Wada Dankadai Local Government Area</h1>
+        </div>
+        <ul class="sidebar-menu">
+            <li><a href="#"><i class="fas fa-home"></i> Home</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle"><i class="fas fa-landmark"></i> Government Services</a>
+                <div class="sidebar-dropdown">
+                    <a href="#"><i class="fas fa-baby"></i> Birth & Death Registration</a>
+                    <a href="#"><i class="fas fa-briefcase"></i> Business Permits & Licensing</a>
+                    <a href="#"><i class="fas fa-house-user"></i> Land Use & Property Management</a>
+                    <a href="#"><i class="fas fa-money-bill-wave"></i> Tax Payment & Collection Services</a>
+                </div>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle"><i class="fas fa-building"></i> Departments & Ministries</a>
+                <div class="sidebar-dropdown">
+                    <a href="#"><i class="fas fa-users-cog"></i> Administration</a>
+                    <a href="#"><i class="fas fa-coins"></i> Finance</a>
+                    <a href="#"><i class="fas fa-hospital"></i> Health</a>
+                    <a href="#"><i class="fas fa-school"></i> Education</a>
+                    <a href="#"><i class="fas fa-tractor"></i> Agriculture</a>
+                </div>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle"><i class="fas fa-project-diagram"></i> Projects & Development</a>
+                <div class="sidebar-dropdown">
+                    <a href="#"><i class="fas fa-hammer"></i> Ongoing Projects</a>
+                    <a href="#"><i class="fas fa-check-circle"></i> Completed Projects</a>
+                    <a href="#"><i class="fas fa-lightbulb"></i> Future Development Plans</a>
+                    <a href="#"><i class="fas fa-calculator"></i> Indigenous Form</a>
+                </div>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle"><i class="fas fa-users"></i> Empowerment</a>
+                <div class="sidebar-dropdown">
+                    <a href="#"><i class="fas fa-graduation-cap"></i> Skills Development</a>
+                    <a href="#"><i class="fas fa-seedling"></i> Agricultural Support</a>
+                    <a href="#"><i class="fas fa-tools"></i> Trade Support</a>
+                    <a href="#"><i class="fas fa-hands-helping"></i> Youth Programs</a>
+                    <a href="#"><i class="fas fa-heart"></i> Women Empowerment</a>
+                </div>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle"><i class="fas fa-user-tie"></i> Recruitment</a>
+                <div class="sidebar-dropdown">
+                    <a href="#"><i class="fas fa-clipboard-list"></i> Job Vacancies</a>
+                    <a href="#"><i class="fas fa-file-upload"></i> Application Portal</a>
+                    <a href="#"><i class="fas fa-calendar-check"></i> Exam Schedules</a>
+                    <a href="#"><i class="fas fa-trophy"></i> Results</a>
+                    <a href="#"><i class="fas fa-info-circle"></i> Requirements</a>
+                </div>
+            </li>
+            <li><a href="about.html"><i class="fas fa-info-circle"></i> About Us</a></li>
+            <li><a href="contact_us.html"><i class="fas fa-envelope"></i> Contact</a></li>
+        </ul>
+    </div>
 
-navItems.forEach(item => {
-    if (item.querySelector('.dropdown-content')) {
-        item.addEventListener('click', function(e) {
-            if (window.innerWidth <= 768) {
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Header -->
+        <header class="header">
+            <div class="container">
+                <div class="header-content">
+                    <h1>Welcome to Tudun Wada Local Government Area</h1>
+                    <p>Serving our community with excellence, transparency, and dedication</p>
+                </div>
+            </div>
+        </header>
+
+        <!-- Leadership Section -->
+        <section class="leadership-section">
+            <div class="container">
+                <h2 class="section-title">Our Leadership</h2>
+                <div class="leadership-grid">
+                    <div class="leader-card">
+                        <div class="leader-image">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <h3 class="leader-name">His Excellency [President's Name]</h3>
+                        <p class="leader-title">President of the Federal Republic of Nigeria</p>
+                        <div class="leader-info">
+                            <p>Leading the nation with vision and commitment to democratic values, economic development, and unity among all Nigerians.</p>
+                        </div>
+                    </div>
+                    <div class="leader-card">
+                        <div class="leader-image">
+                            <i class="fas fa-landmark"></i>
+                        </div>
+                        <h3 class="leader-name">His Excellency [Governor's Name]</h3>
+                        <p class="leader-title">Executive Governor of Kano State</p>
+                        <div class="leader-info">
+                            <p>Dedicated to the development of Kano State through infrastructure, education, healthcare, and economic empowerment programs.</p>
+                        </div>
+                    </div>
+                    <div class="leader-card">
+                        <div class="leader-image">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <h3 class="leader-name">Hon. [Chairperson's Name]</h3>
+                        <p class="leader-title">Executive Chairman, Tudun Wada LGA</p>
+                        <div class="leader-info">
+                            <p>Committed to grassroots development, community empowerment, and ensuring quality service delivery to all residents of Tudun Wada LGA.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- News Section -->
+        <section class="section">
+            <div class="container">
+                <h2 class="section-title">Latest News & Updates</h2>
+                <div class="card-grid">
+                    <div class="card">
+                        <div class="card-img">
+                            <img src="water.jpg" alt="Water Project">
+                        </div>
+                        <div class="card-content">
+                            <div class="badge badge-ongoing">New</div>
+                            <h3>New Water Project Launched</h3>
+                            <p>The local government has launched a new water project that will provide clean drinking water to over 5,000 residents in rural communities.</p>
+                            <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-img">
+                            <img src="project2.jpg" alt="Health Clinic">
+                        </div>
+                        <div class="card-content">
+                            <div class="badge badge-ongoing">Announcement</div>
+                            <h3>Community Health Week Announced</h3>
+                            <p>The health department is organizing a community health week starting May 10th with free medical check-ups and vaccinations.</p>
+                            <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-img">
+                            <img src="cp1.jpg" alt="Road Construction">
+                        </div>
+                        <div class="card-content">
+                            <div class="badge badge-completed">Completed</div>
+                            <h3>Road Rehabilitation Project Completed</h3>
+                            <p>The long-awaited road rehabilitation project connecting major communities has been successfully completed ahead of schedule.</p>
+                            <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section class="section">
+            <div class="container">
+                <h2 class="section-title">Government Services</h2>
+                <div class="card-grid">
+                    <div class="card service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-baby"></i>
+                        </div>
+                        <h3>Birth & Death Registration</h3>
+                        <p>Register births and deaths, obtain certificates and maintain official records of vital events in our community.</p>
+                        <button class="btn">Learn More</button>
+                    </div>
+                    <div class="card service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+                        <h3>Business Permits & Licensing</h3>
+                        <p>Apply for new business permits, renew existing licenses, and get information about local business regulations.</p>
+                        <button class="btn">Learn More</button>
+                    </div>
+                    <div class="card service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-house-user"></i>
+                        </div>
+                        <h3>Land Use & Property Management</h3>
+                        <p>Access services related to land acquisition, property taxes, zoning regulations, and development permits.</p>
+                        <button class="btn">Learn More</button>
+                    </div>
+                    <div class="card service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-money-bill-wave"></i>
+                        </div>
+                        <h3>Tax Payment & Collection</h3>
+                        <p>Pay local taxes, check tax status, and understand tax obligations for residents and businesses in our LGA.</p>
+                        <button class="btn">Pay Online</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Departments Section -->
+        <section class="section">
+            <div class="container">
+                <h2 class="section-title">Departments & Ministries</h2>
+                <div class="card-grid">
+                    <div class="card">
+                        <div class="card-img">
+                            <img src="ADD (4).jpg" alt="Administration Department">
+                        </div>
+                        <div class="card-content">
+                            <h3>Administration Department</h3>
+                            <p>Responsible for the overall coordination of government activities, personnel management, and public relations.</p>
+                            <div class="contact-info">
+                                <p><i class="fas fa-user-tie"></i> <strong>Head:</strong> Mr. Ibrahim Mohammed</p>
+                                <p><i class="fas fa-envelope"></i> <strong>Email:</strong> admin@tudunwada.gov.ng</p>
+                                <p><i class="fas fa-phone"></i> <strong>Phone:</strong> +234-XXX-XXXX-XXX</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-img">
+                            <img src="ADD (2).jpg" alt="Health Department">
+                        </div>
+                        <div class="card-content">
+                            <h3>Health Department</h3>
+                            <p>Oversees public health initiatives, healthcare facilities, sanitation programs, and disease prevention efforts.</p>
+                            <div class="contact-info">
+                                <p><i class="fas fa-user-md"></i> <strong>Head:</strong> Dr. Amina Yusuf</p>
+                                <p><i class="fas fa-envelope"></i> <strong>Email:</strong> health@tudunwada.gov.ng</p>
+                                <p><i class="fas fa-phone"></i> <strong>Phone:</strong> +234-XXX-XXXX-XXX</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-img">
+                            <img src="ADD (3).jpg" alt="Education Department">
+                        </div>
+                        <div class="card-content">
+                            <h3>Education Department</h3>
+                            <p>Manages educational programs, school infrastructure, teacher training, and scholarship opportunities.</p>
+                            <div class="contact-info">
+                                <p><i class="fas fa-user-graduate"></i> <strong>Head:</strong> Mrs. Fatima Bello</p>
+                                <p><i class="fas fa-envelope"></i> <strong>Email:</strong> education@tudunwada.gov.ng</p>
+                                <p><i class="fas fa-phone"></i> <strong>Phone:</strong> +234-XXX-XXXX-XXX</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-img">
+                            <img src="ADD (1).jpg" alt="Agriculture Department">
+                        </div>
+                        <div class="card-content">
+                            <h3>Agriculture Department</h3>
+                            <p>Promotes agricultural development, farmer support programs, and food security initiatives.</p>
+                            <div class="contact-info">
+                                <p><i class="fas fa-tractor"></i> <strong>Head:</strong> Mr. Usman Sani</p>
+                                <p><i class="fas fa-envelope"></i> <strong>Email:</strong> agriculture@tudunwada.gov.ng</p>
+                                <p><i class="fas fa-phone"></i> <strong>Phone:</strong> +234-XXX-XXXX-XXX</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="section">
+            <div class="container">
+                <h2 class="section-title">Contact Us</h2>
+                <div class="card-grid">
+                    <div class="card">
+                        <div class="card-content">
+                            <h3>Get in Touch</h3>
+                            <div class="contact-info">
+                                <p><i class="fas fa-map-marker-alt"></i> <strong>Address:</strong> Tudun Wada LGA Secretariat, Kano State, Nigeria</p>
+                                <p><i class="fas fa-phone"></i> <strong>Phone:</strong> +234-XXX-XXXX-XXX</p>
+                                <p><i class="fas fa-envelope"></i> <strong>Email:</strong> info@tudunwada.gov.ng</p>
+                                <p><i class="fas fa-clock"></i> <strong>Office Hours:</strong> Mon-Fri, 8:00 AM - 4:00 PM</p>
+                            </div>
+                            <div class="social-links">
+                                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="#"><i class="fab fa-instagram"></i></a>
+                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-content">
+                            <h3>Send Us a Message</h3>
+                            <form action="#" method="post">
+                                <div class="form-group">
+                                    <input type="text" name="name" placeholder="Your Name" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" name="email" placeholder="Your Email" required>
+                                </div>
+                                <div class="form-group">
+                                    <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+                                </div>
+                                <button type="submit" class="btn">Send Message</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-container">
+                    <div class="footer-section">
+                        <h3>About Tudun Wada LGA</h3>
+                        <p>Tudun Wada Dankadai Local Government Area is committed to fostering sustainable development, community empowerment, and quality service delivery for all residents.</p>
+                    </div>
+                    <div class="footer-section">
+                        <h3>Quick Links</h3>
+                        <ul>
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#">Services</a></li>
+                            <li><a href="#">Projects</a></li>
+                            <li><a href="#">Departments</a></li>
+                            <li><a href="about.html">About Us</a></li>
+                            <li><a href="contact_us.html">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h3>Contact Info</h3>
+                        <p><i class="fas fa-map-marker-alt"></i> Tudun Wada LGA Secretariat, Kano State, Nigeria</p>
+                        <p><i class="fas fa-phone"></i> +234-XXX-XXXX-XXX</p>
+                        <p><i class="fas fa-envelope"></i> info@tudunwada.gov.ng</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                    <div class="footer-section">
+                        <h3>Search</h3>
+                        <div class="search-bar">
+                            <input type="text" placeholder="Search...">
+                            <button type="submit"><i class="fas fa-search"></i></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="bottom-footer">
+                    <p>&copy; 2025 Tudun Wada Dankadai Local Government Area. All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Scroll to Top Button -->
+        <button class="scroll-top-btn" id="scrollTopBtn">
+            <i class="fas fa-arrow-up"></i>
+        </button>
+    </div>
+
+    <script>
+        // Sidebar Toggle
+        const sidebar = document.getElementById('sidebar');
+        const sidebarToggle = document.getElementById('sidebarToggle');
+
+        sidebarToggle.addEventListener('click', () => {
+            sidebar.classList.toggle('active');
+        });
+
+        // Dropdown Menu
+        const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+        dropdownToggles.forEach(toggle => {
+            toggle.addEventListener('click', (e) => {
                 e.preventDefault();
-                this.classList.toggle('active');
-                
-                // Close other dropdowns when opening a new one
-                navItems.forEach(otherItem => {
-                    if (otherItem !== this && otherItem.classList.contains('active')) {
-                        otherItem.classList.remove('active');
+                const parent = toggle.parentElement;
+                const dropdown = parent.querySelector('.sidebar-dropdown');
+                const isActive = parent.classList.contains('active');
+
+                // Close all other dropdowns
+                document.querySelectorAll('.dropdown').forEach(item => {
+                    if (item !== parent) {
+                        item.classList.remove('active');
+                        item.querySelector('.sidebar-dropdown').classList.remove('active');
                     }
                 });
+
+                // Toggle current dropdown
+                parent.classList.toggle('active', !isActive);
+                dropdown.classList.toggle('active', !isActive);
+            });
+        });
+
+        // Scroll to Top Button
+        const scrollTopBtn = document.getElementById('scrollTopBtn');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                scrollTopBtn.classList.add('visible');
+            } else {
+                scrollTopBtn.classList.remove('visible');
             }
         });
-    }
-});
 
-// Close menu when clicking outside on mobile
-document.addEventListener('click', function(e) {
-    if (window.innerWidth <= 768) {
-        if (!e.target.closest('.nav-container')) {
-            document.getElementById('navMenu').classList.remove('active');
-            document.querySelector('.menu-icon i').classList.remove('fa-times');
-            document.querySelector('.menu-icon i').classList.add('fa-bars');
-            
-            // Close all dropdowns
-            navItems.forEach(item => {
-                item.classList.remove('active');
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Form Submission (Placeholder for demo purposes)
+        const contactForm = document.querySelector('form');
+        if (contactForm) {
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                alert('Thank you for your message! We will get back to you soon.');
+                contactForm.reset();
             });
         }
-    }
-});
-
-// Resize handler to reset mobile menu state
-window.addEventListener('resize', function() {
-    if (window.innerWidth > 768) {
-        document.getElementById('navMenu').classList.remove('active');
-        document.querySelector('.menu-icon i').classList.remove('fa-times');
-        document.querySelector('.menu-icon i').classList.add('fa-bars');
-        
-        // Close all dropdowns
-        navItems.forEach(item => {
-            item.classList.remove('active');
-        });
-    }
-});
-
-// Smooth scrolling for anchor links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-        // Only apply smooth scroll for actual hash links, not "#" placeholders
-        if(this.getAttribute('href') !== "#") {
-            e.preventDefault();
-            
-            const targetId = this.getAttribute('href');
-            const targetElement = document.querySelector(targetId);
-            
-            if (targetElement) {
-                window.scrollTo({
-                    top: targetElement.offsetTop - 70, // Offset for fixed header
-                    behavior: 'smooth'
-                });
-                
-                // Close mobile menu after clicking
-                if (window.innerWidth <= 768) {
-                    document.getElementById('navMenu').classList.remove('active');
-                    document.querySelector('.menu-icon i').classList.remove('fa-times');
-                    document.querySelector('.menu-icon i').classList.add('fa-bars');
-                }
-            }
-        }
-    });
-});
-
-// Search functionality
-document.querySelector('.search-bar button').addEventListener('click', function(e) {
-    e.preventDefault();
-    const searchTerm = document.querySelector('.search-bar input').value.trim().toLowerCase();
-    
-    if (searchTerm) {
-        // Here you would typically send this to a search API or backend
-        // For demo purposes, we'll just alert the search term
-        alert('Searching for: ' + searchTerm);
-        // Clear the search input
-        document.querySelector('.search-bar input').value = '';
-    }
-});
-
-// Allow search on Enter key press
-document.querySelector('.search-bar input').addEventListener('keypress', function(e) {
-    if (e.key === 'Enter') {
-        e.preventDefault();
-        document.querySelector('.search-bar button').click();
-    }
-});
-
-// Newsletter subscription
-const footerForm = document.querySelector('.footer-section .search-bar');
-if (footerForm) {
-    footerForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        const emailInput = this.querySelector('input[type="email"]');
-        const email = emailInput.value.trim();
-        
-        if (email && validateEmail(email)) {
-            alert('Thank you for subscribing to our newsletter!');
-            emailInput.value = '';
-        } else {
-            alert('Please enter a valid email address.');
-        }
-    });
-    
-    // Also trigger on button click
-    const footerButton = footerForm.querySelector('button');
-    if (footerButton) {
-        footerButton.addEventListener('click', function(e) {
-            e.preventDefault();
-            const emailInput = footerForm.querySelector('input[type="email"]');
-            const email = emailInput.value.trim();
-            
-            if (email && validateEmail(email)) {
-                alert('Thank you for subscribing to our newsletter!');
-                emailInput.value = '';
-            } else {
-                alert('Please enter a valid email address.');
-            }
-        });
-    }
-}
-
-// Helper function to validate email format
-function validateEmail(email) {
-    const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    return re.test(String(email).toLowerCase());
-}
-
-// Button hover effects for better UI feedback
-const buttons = document.querySelectorAll('.btn');
-buttons.forEach(button => {
-    button.addEventListener('mouseenter', function() {
-        this.style.transform = 'translateY(-2px)';
-        this.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.1)';
-    });
-    
-    button.addEventListener('mouseleave', function() {
-        this.style.transform = '';
-        this.style.boxShadow = '';
-    });
-    
-    button.addEventListener('click', function() {
-        // Add a click animation
-        this.style.transform = 'translateY(1px)';
-        setTimeout(() => {
-            this.style.transform = '';
-        }, 200);
-    });
-});
-
-// Add date picker functionality for any forms that need it
-document.addEventListener('DOMContentLoaded', function() {
-    // This would typically use a date picker library like flatpickr or similar
-    // For this example, we'll just use native date inputs
-    const dateInputs = document.querySelectorAll('input[type="date"]');
-    dateInputs.forEach(input => {
-        // Apply any custom date input behavior here if needed
-    });
-});
-
-// Implement simple accordion for mobile view of certain sections
-const accordionHeaders = document.querySelectorAll('.accordion-header');
-accordionHeaders.forEach(header => {
-    header.addEventListener('click', function() {
-        this.classList.toggle('active');
-        const content = this.nextElementSibling;
-        
-        if (content.style.maxHeight) {
-            content.style.maxHeight = null;
-        } else {
-            content.style.maxHeight = content.scrollHeight + 'px';
-        }
-    });
-});
-
-// Add a scroll-to-top button functionality
-const scrollButton = document.createElement('button');
-scrollButton.innerHTML = '<i class="fas fa-arrow-up"></i>';
-scrollButton.className = 'scroll-top-btn';
-scrollButton.style.position = 'fixed';
-scrollButton.style.bottom = '20px';
-scrollButton.style.right = '20px';
-scrollButton.style.zIndex = '99';
-scrollButton.style.opacity = '0';
-scrollButton.style.visibility = 'hidden';
-scrollButton.style.width = '50px';
-scrollButton.style.height = '50px';
-scrollButton.style.borderRadius = '50%';
-scrollButton.style.backgroundColor = 'var(--primary)';
-scrollButton.style.color = 'var(--white)';
-scrollButton.style.border = 'none';
-scrollButton.style.cursor = 'pointer';
-scrollButton.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.2)';
-scrollButton.style.transition = 'all 0.3s ease';
-
-document.body.appendChild(scrollButton);
-
-// Show/hide scroll button based on scroll position
-window.addEventListener('scroll', function() {
-    if (window.scrollY > 300) {
-        scrollButton.style.opacity = '1';
-        scrollButton.style.visibility = 'visible';
-    } else {
-        scrollButton.style.opacity = '0';
-        scrollButton.style.visibility = 'hidden';
-    }
-});
-
-// Scroll to top when button is clicked
-scrollButton.addEventListener('click', function() {
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-    });
-});
-
-// Initialize any carousels or sliders
-// This would typically use a library like Swiper.js, but we'll stick with basic functionality
-function initializeSliders() {
-    // Logic for implementing basic sliders would go here
-    // For this example, we're just setting up the structure
-}
-
-// Initialize AOS (Animate on Scroll) like functionality
-function initializeAOS() {
-    const animatedElements = document.querySelectorAll('.animate-on-scroll');
-    
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('animated');
-                observer.unobserve(entry.target);
-            }
-        });
-    }, {
-        threshold: 0.1
-    });
-    
-    animatedElements.forEach(element => {
-        observer.observe(element);
-    });
-}
-
-// Call initialization functions
-document.addEventListener('DOMContentLoaded', function() {
-    initializeSliders();
-    initializeAOS();
-});
-
-   </script>
+    </script>
+</body>
+</html>
