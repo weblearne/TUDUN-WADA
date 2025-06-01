@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login - Tudun Wada LGA</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --success: #27ae60;
+            --warning: #f39c12;
+            --info: #17a2b8;
+            --danger: #dc3545;
+            --white: #ffffff;
+            --light: #f8f9fa;
+            --dark: #343a40;
+            --text: #2c3e50;
+            --border: #dee2e6;
+            --gradient-primary: linear-gradient(135deg, var(--primary), var(--secondary));
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            color: var(--text);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .login-container {
+            width: 100%;
+            max-width: 450px;
+            background: var(--white);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .login-header {
+            background: var(--gradient-primary);
+            color: var(--white);
+            padding: 30px;
+            text-align: center;
+        }
+
+        .login-header img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 3px solid var(--white);
+            margin-bottom: 15px;
+        }
+
+        .login-header h1 {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+
+        .login-header p {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .login-body {
+            padding: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .input-group {
+            position: relative;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 12px 15px 12px 40px;
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .input-group input:focus {
+            outline: none;
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+        }
+
+        .input-group i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--secondary);
+        }
+
+        .btn {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+
+        .btn-primary {
+            background: var(--gradient-primary);
+            color: var(--white);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .login-footer {
+            text-align: center;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+            font-size: 13px;
+            color: #666;
+        }
+
+        .login-footer a {
+            color: var(--secondary);
+            text-decoration: none;
+        }
+
+        .login-footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Alert */
+        .alert {
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid;
+            display: none;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .alert.show {
+            display: flex;
+        }
+
+        .alert-error {
+            background: #f8d7da;
+            color: #721c24;
+            border-left-color: var(--danger);
+        }
+
+        /* Responsive */
+        @media (max-width: 576px) {
+            .login-container {
+                border-radius: 10px;
+            }
+            
+            .login-header {
+                padding: 20px;
+            }
+            
+            .login-body {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-header">
+            <img src="hon3.jpg" alt="Tudun Wada LGA Logo">
+            <h1>Admin Dashboard</h1>
+            <p>Tudun Wada Local Government Area</p>
+        </div>
+        
+        <div class="login-body">
+            <div id="loginAlert" class="alert alert-error">
+                <i class="fas fa-exclamation-circle"></i>
+                <span id="alertMessage">Invalid username or password</span>
+                <button onclick="document.getElementById('loginAlert').classList.remove('show')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <form id="loginForm" onsubmit="login(event)">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <div class="input-group">
+                        <i class="fas fa-user"></i>
+                        <input type="text" id="username" placeholder="Enter your username" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <div class="input-group">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="password" placeholder="Enter your password" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-sign-in-alt"></i> Login
+                    </button>
+                </div>
+            </form>
+        </div>
+        
+        <div class="login-footer">
+            <p>Having trouble? <a href="#">Contact support</a></p>
+            <p>&copy; 2023 Tudun Wada LGA. All rights reserved.</p>
+        </div>
+    </div>
+
+    <script>
+        // Login Function
+        function login(e) {
+            e.preventDefault();
+            
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const alertBox = document.getElementById('loginAlert');
+            const alertMessage = document.getElementById('alertMessage');
+            
+            // Simple validation (replace with actual authentication in production)
+            if (username === 'admin' && password === 'admin123') {
+                // Successful login - redirect to dashboard
+                alertMessage.textContent = 'Login successful! Redirecting...';
+                alertBox.className = 'alert alert-success show';
+                
+                // Replace with actual redirect in production
+                setTimeout(() => {
+                    window.location.href = 'dashboard.html';
+                }, 1500);
+            } else {
+                // Failed login
+                alertMessage.textContent = 'Invalid username or password';
+                alertBox.className = 'alert alert-error show';
+                
+                // Clear password field
+                document.getElementById('password').value = '';
+                
+                // Shake animation for error
+                document.getElementById('loginForm').classList.add('shake');
+                setTimeout(() => {
+                    document.getElementById('loginForm').classList.remove('shake');
+                }, 500);
+            }
+        }
+
+        // Add shake animation to CSS
+        const style = document.createElement('style');
+        style.textContent = `
+            .shake {
+                animation: shake 0.5s;
+            }
+            @keyframes shake {
+                0%, 100% { transform: translateX(0); }
+                10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+                20%, 40%, 60%, 80% { transform: translateX(5px); }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Add alert types to CSS
+        const alertStyles = document.createElement('style');
+        alertStyles.textContent = `
+            .alert-success {
+                background: #d4edda;
+                color: #155724;
+                border-left-color: var(--success);
+            }
+        `;
+        document.head.appendChild(alertStyles);
+    </script>
+</body>
+</html>
