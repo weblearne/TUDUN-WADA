@@ -26,3 +26,5 @@ Future development plans
 Budget & expenditures
 
 add a transparent bg img where i can place our lga secretariat img before our leaders img  and on the our leadership add a image tag where i can add all leader picture here is the code
+
+help  to design a beatiful and responsive admin dashboard for our local government chairperson where her can post a new project, ongoing, completed, pending project and announcement and create a chart button where her can chart with all department within the ecreteriate and her can post, delete post, edit post and where her can see all submitted  application for empowerment, job vacancies, women empowerment,  and all activities should include from the home page    and include all other local government activities here is the code

@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tudun Wada Dankadai Local Government Area - Empowerment Application</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --success: #27ae60;
+            --warning: #f39c12;
+            --info: #17a2b8;
+            --white: #ffffff;
+            --light: #f8f9fa;
+            --dark: #343a40;
+            --text: #2c3e50;
+            --border: #dee2e6;
+            --sidebar-width: 280px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: linear-gradient(135deg, rgba(44, 62, 80, 0.1) 0%, rgba(52, 152, 219, 0.1) 100%);
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: var(--sidebar-width);
+            height: 100vh;
+            background: linear-gradient(180deg, var(--primary) 0%, #34495e 100%);
+            color: var(--white);
+            z-index: 1000;
+            overflow-y: auto;
+            transition: transform 0.3s ease;
+        }
+
+        .sidebar-header {
+            padding: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+        }
+
+        .sidebar-header img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+
+        .sidebar-header h1 {
+            font-size: 16px;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        .sidebar-menu {
+            list-style: none;
+            padding: 20px 0;
+        }
+
+        .sidebar-menu li {
+            position: relative;
+        }
+
+        .sidebar-menu a {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            color: var(--white);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border-left: 3px solid transparent;
+        }
+
+        .sidebar-menu a:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-left-color: var(--secondary);
+        }
+
+        .sidebar-menu a i {
+            margin-right: 12px;
+            width: 20px;
+            text-align: center;
+        }
+
+        .sidebar-menu .dropdown-toggle::after {
+            content: '\f107';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            margin-left: auto;
+            transition: transform 0.3s ease;
+        }
+
+        .sidebar-menu .dropdown.active .dropdown-toggle::after {
+            transform: rotate(180deg);
+        }
+
+        .sidebar-dropdown {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .sidebar-dropdown.active {
+            max-height: 500px;
+        }
+
+        .sidebar-dropdown a {
+            padding: 12px 20px 12px 50px;
+            font-size: 14px;
+            border-left: none;
+        }
+
+        .sidebar-toggle {
+            display: none;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1001;
+            background: darkblue;
+            color: var(--white);
+            border: none;
+            padding: 12px;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .main-content {
+            margin-left: var(--sidebar-width);
+            min-height: 100vh;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:rgba(255,255,255,0.8)"/><stop offset="100%" style="stop-color:rgba(240,248,255,0.8)"/></linearGradient></defs><rect width="100%" height="100%" fill="url(%23bg)"/></svg>') no-repeat center center;
+            background-size: cover;
+            position: relative;
+        }
+
+        .main-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.9);
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: var(--white);
+            padding: 40px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="1" fill="rgba(255,255,255,0.1)"/></svg>') repeat;
+            animation: float 20s infinite linear;
+        }
+
+        @keyframes float {
+            0% { transform: translateX(-50px) translateY(-50px); }
+            100% { transform: translateX(50px) translateY(50px); }
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .section {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: var(--primary);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--secondary);
+        }
+
+        .card {
+            background: var(--white);
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-content {
+            padding: 25px;
+        }
+
+        .empowerment-form {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            outline: none;
+            font-size: 14px;
+            font-family: 'Arial', sans-serif;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: var(--secondary);
+            box-shadow: 0 0 5px rgba(52, 152, 219, 0.3);
+        }
+
+        .form-group .required::after {
+            content: '*';
+            color: var(--accent);
+            margin-left: 5px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .form-group.checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .form-group.checkbox-group input {
+            width: auto;
+            margin: 0;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 25px;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .form-note {
+            font-size: 12px;
+            color: #666;
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+            }
+
+            .sidebar.active {
+                transform: translateX(0);
+            }
+
+            .sidebar-toggle {
+                display: block;
+            }
+
+            .main-content {
+                margin-left: 0;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button class="sidebar-toggle" id="sidebarToggle">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <img src="logo.jpeg" alt="Tudun Wada LGA Logo">
+            <h1>Tudun Wada Dankadai Local Government Area</h1>
+        </div>
+        <ul class="sidebar-menu">
+            <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle"><i class="fas fa-landmark"></i> Government Services</a>
+                <div class="sidebar-dropdown">
+                    <a href="#"><i class="fas fa-baby"></i> Birth & Death Registration</a>
+                    <a href="#"><i class="fas fa-briefcase"></i> Business Permits & Licensing</a>
+                    <a href="#"><i class="fas fa-house-user"></i> Land Use & Property Management</a>
+                    <a href="#"><i class="fas fa-money-bill-wave"></i> Tax Payment & Collection Services</a>
+                </div>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle"><i class="fas fa-building"></i> Departments & Ministries</a>
+                <div class="sidebar-dropdown">
+                    <a href="#"><i class="fas fa-users-cog"></i> Administration</a>
+                    <a href="#"><i class="fas fa-coins"></i> Finance</a>
+                    <a href="#"><i class="fas fa-hospital"></i> Health</a>
+                    <a href="#"><i class="fas fa-school"></i> Education</a>
+                    <a href="#"><i class="fas fa-tractor"></i> Agriculture</a>
+                </div>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle"><i class="fas fa-project-diagram"></i> Projects & Development</a>
+                <div class="sidebar-dropdown">
+                    <a href="#"><i class="fas fa-hammer"></i> Ongoing Projects</a>
+                    <a href="#"><i class="fas fa-check-circle"></i> Completed Projects</a>
+                    <a href="#"><i class="fas fa-lightbulb"></i> Future Development Plans</a>
+                    <a href="#"><i class="fas fa-calculator"></i> Indigenous Form</a>
+                </div>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle"><i class="fas fa-users"></i> Empowerment</a>
+                <div class="sidebar-dropdown">
+                    <a href="#"><i class="fas fa-graduation-cap"></i> Skills Development</a>
+                    <a href="#"><i class="fas fa-seedling"></i> Agricultural Support</a>
+                    <a href="#"><i class="fas fa-tools"></i> Trade Support</a>
+                    <a href="#"><i class="fas fa-hands-helping"></i> Youth Programs</a>
+                    <a href="#"><i class="fas fa-heart"></i> Women Empowerment</a>
+                </div>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle"><i class="fas fa-user-tie"></i> Recruitment</a>
+                <div class="sidebar-dropdown">
+                    <a href="#"><i class="fas fa-clipboard-list"></i> Job Vacancies</a>
+                    <a href="#"><i class="fas fa-file-upload"></i> Application Portal</a>
+                    <a href="#"><i class="fas fa-calendar-check"></i> Exam Schedules</a>
+                    <a href="#"><i class="fas fa-trophy"></i> Results</a>
+                    <a href="#"><i class="fas fa-info-circle"></i> Requirements</a>
+                </div>
+            </li>
+            <li><a href="about.html"><i class="fas fa-info-circle"></i> About Us</a></li>
+            <li><a href="contact_us.html"><i class="fas fa-envelope"></i> Contact</a></li>
+        </ul>
+    </div>
+
+    <div class="main-content">
+        <header class="header">
+            <div class="container">
+                <div class="header-content">
+                    <h1>Empowerment Application Form</h1>
+                    <p>Apply for empowerment programs offered by Tudun Wada Local Government Area</p>
+                </div>
+            </div>
+        </header>
+
+        <section class="section">
+            <div class="container">
+                <h2 class="section-title">Empowerment Application</h2>
+                <div class="card">
+                    <div class="card-content">
+                        <div class="empowerment-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="fullName" class="required">Full Name</label>
+                                    <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email" class="required">Email Address</label>
+                                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="phone" class="required">Phone Number</label>
+                                    <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="nin" class="required">National Identification Number (NIN)</label>
+                                    <input type="text" id="nin" name="nin" placeholder="Enter your NIN" required>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="address" class="required">Residential Address</label>
+                                    <input type="text" id="address" name="address" placeholder="Enter your address" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="state" class="required">State</label>
+                                    <select id="state" name="state" required>
+                                        <option value="" disabled selected>Select your state</option>
+                                        <option value="kano">Kano</option>
+                                        <option value="lagos">Lagos</option>
+                                        <option value="abuja">Abuja</option>
+                                        <option value="rivers">Rivers</option>
+                                        <option value="others">Others</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="lga" class="required">Local Government Area</label>
+                                    <select id="lga" name="lga" required>
+                                        <option value="" disabled selected>Select your LGA</option>
+                                        <option value="tudun-wada">Tudun Wada</option>
+                                        <option value="kano-municipal">Kano Municipal</option>
+                                        <option value="dala">Dala</option>
+                                        <option value="fagge">Fagge</option>
+                                        <option value="others">Others</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="ward" class="required">Ward</label>
+                                    <input type="text" id="ward" name="ward" placeholder="Enter your ward" required>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="gender" class="required">Gender</label>
+                                    <select id="gender" name="gender" required>
+                                        <option value="" disabled selected>Select your gender</option>
+                                        <option value="male">Male</option>
+                                        <option value="female">Female</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="maritalStatus" class="required">Marital Status</label>
+                                    <select id="maritalStatus" name="maritalStatus" required>
+                                        <option value="" disabled selected>Select your marital status</option>
+                                        <option value="single">Single</option>
+                                        <option value="married">Married</option>
+                                        <option value="divorced">Divorced</option>
+                                        <option value="widowed">Widowed</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="accountNumber" class="required">Account Number</label>
+                                    <input type="text" id="accountNumber" name="accountNumber" placeholder="Enter your account number" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="accountName" class="required">Account Name</label>
+                                    <input type="text" id="accountName" name="accountName" placeholder="Enter your account name" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="bankName" class="required">Bank Name</label>
+                                <select id="bankName" name="bankName" required>
+                                    <option value="" disabled selected>Select your bank</option>
+                                    <option value="access">Access Bank</option>
+                                    <option value="first">First Bank of Nigeria</option>
+                                    <option value="gtb">Guaranty Trust Bank</option>
+                                    <option value="zenith">Zenith Bank</option>
+                                    <option value="uba">United Bank for Africa</option>
+                                    <option value="others">Others</option>
+                                </select>
+                            </div>
+                            <div class="form-group checkbox-group">
+                                <input type="checkbox" id="terms" name="terms" required>
+                                <label for="terms" class="required">I agree to the terms and conditions of the empowerment program</label>
+                            </div>
+                            <button type="submit" class="btn" onclick="submitForm()">Submit Application</button>
+                            <p class="form-note">* Required fields. Applications will be reviewed by the Tudun Wada LGA Empowerment Committee.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        const sidebar = document.getElementById('sidebar');
+        const sidebarToggle = document.getElementById('sidebarToggle');
+
+        sidebarToggle.addEventListener('click', () => {
+            sidebar.classList.toggle('active');
+        });
+
+        const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+        dropdownToggles.forEach(toggle => {
+            toggle.addEventListener('click', (e) => {
+                e.preventDefault();
+                const parent = toggle.parentElement;
+                const dropdown = parent.querySelector('.sidebar-dropdown');
+                const isActive = parent.classList.contains('active');
+
+                document.querySelectorAll('.dropdown').forEach(item => {
+                    if (item !== parent) {
+                        item.classList.remove('active');
+                        item.querySelector('.sidebar-dropdown').classList.remove('active');
+                    }
+                });
+
+                parent.classList.toggle('active', !isActive);
+                dropdown.classList.toggle('active', !isActive);
+            });
+        });
+
+        function submitForm() {
+            const form = document.querySelector('.empowerment-form');
+            const inputs = form.querySelectorAll('input[required], select[required]');
+            let isValid = true;
+
+            inputs.forEach(input => {
+                if (!input.value.trim()) {
+                    isValid = false;
+                    input.style.borderColor = 'var(--accent)';
+                } else {
+                    input.style.borderColor = 'var(--border)';
+                }
+            });
+
+            const terms = document.getElementById('terms');
+            if (!terms.checked) {
+                isValid = false;
+                terms.style.outline = '2px solid var(--accent)';
+            } else {
+                terms.style.outline = 'none';
+            }
+
+            if (isValid) {
+                alert('Thank you for your application! The Tudun Wada LGA Empowerment Committee will review your submission.');
+                form.reset();
+            } else {
+                alert('Please fill out all required fields and agree to the terms.');
+            }
+        }
+    </script>
+</body>
+</html>

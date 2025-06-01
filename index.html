@@ -622,6 +622,63 @@
         .read-more:hover {
             color: var(--secondary);
         }
+
+        /* Alerts - Updated Styles */
+.alert {
+    padding: 15px 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    border-left: 4px solid;
+    display: none;
+    align-items: center;
+    gap: 10px;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1100;
+    max-width: 400px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    animation: slideInRight 0.3s ease forwards;
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.alert button {
+    margin-left: auto;
+    background: none;
+    border: none;
+    color: inherit;
+    cursor: pointer;
+    font-size: 16px;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+}
+
+.alert button:hover {
+    opacity: 1;
+}
+
+/* Logout Button */
+.sidebar-menu li a[onclick="logout()"] {
+    margin-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 20px;
+}
+
+.sidebar-menu li a[onclick="logout()"]:hover {
+    color: #fff !important;
+    background: rgba(231, 76, 60, 0.2) !important;
+    border-left-color: #e74c3c !important;
+}
     </style>
 </head>
 <body>
@@ -672,8 +729,9 @@
                     <a href="#"><i class="fas fa-graduation-cap"></i> Skills Development</a>
                     <a href="#"><i class="fas fa-seedling"></i> Agricultural Support</a>
                     <a href="#"><i class="fas fa-tools"></i> Trade Support</a>
-                    <a href="#"><i class="fas fa-hands-helping"></i> Youth Programs</a>
+                    <a href="empowerment1.html"><i class="fas fa-hands-helping"></i> Apply Empowerment Program</a>
                     <a href="#"><i class="fas fa-heart"></i> Women Empowerment</a>
+               
                 </div>
             </li>
             <li class="dropdown">
@@ -688,8 +746,14 @@
             </li>
             <li><a href="about.html"><i class="fas fa-info-circle"></i> About Us</a></li>
             <li><a href="contact_us.html"><i class="fas fa-envelope"></i> Contact</a></li>
+             
+             <!-- admin login buttom -->
+               <a href="#" onclick="logout()" style="color: #ffffff;">
+        <i class="fas fa-sign-out-alt" style=" "></i> Admin Login</a>
         </ul>
+        
     </div>
+
 
     <!-- Main Content -->
     <div class="main-content">
@@ -712,7 +776,7 @@
                         <div class="leader-image">
                             <i class="fas fa-user"></i>
                         </div>
-                        <h3 class="leader-name">His Excellency [President's Name]</h3>
+                        <h3 class="leader-name">His Excellency Bola Ahmad Tinubu</h3>
                         <p class="leader-title">President of the Federal Republic of Nigeria</p>
                         <div class="leader-info">
                             <p>Leading the nation with vision and commitment to democratic values, economic development, and unity among all Nigerians.</p>
@@ -722,7 +786,7 @@
                         <div class="leader-image">
                             <i class="fas fa-landmark"></i>
                         </div>
-                        <h3 class="leader-name">His Excellency [Governor's Name]</h3>
+                        <h3 class="leader-name">His Excellency Abba Kabir yusuf</h3>
                         <p class="leader-title">Executive Governor of Kano State</p>
                         <div class="leader-info">
                             <p>Dedicated to the development of Kano State through infrastructure, education, healthcare, and economic empowerment programs.</p>
@@ -732,8 +796,8 @@
                         <div class="leader-image">
                             <i class="fas fa-user-tie"></i>
                         </div>
-                        <h3 class="leader-name">Hon. [Chairperson's Name]</h3>
-                        <p class="leader-title">Executive Chairman, Tudun Wada LGA</p>
+                        <h3 class="leader-name">Hon. Sa'adatu Salisu Soja</h3>
+                        <p class="leader-title">Executive Chairperson, Tudun Wada LGA</p>
                         <div class="leader-info">
                             <p>Committed to grassroots development, community empowerment, and ensuring quality service delivery to all residents of Tudun Wada LGA.</p>
                         </div>
