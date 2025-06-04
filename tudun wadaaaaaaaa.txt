@@ -1,0 +1,30 @@
+<div class="leadership-grid">
+                    <div class="leader-card">
+                        <div class="leader-image">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <h3 class="leader-name">His Excellency Bola Ahmad Tinubu</h3>
+                        <p class="leader-title">President of the Federal Republic of Nigeria</p>
+                        <div class="leader-info">
+                            <p>Leading the nation with vision and commitment to democratic values, economic development, and unity among all Nigerians.</p>
+                        </div>
+                    </div>
+                    <div class="leader-card">
+                        <div class="leader-image">
+                            <i class="fas fa-landmark"></i>
+                        </div>
+                        <h3 class="leader-name">His Excellency Abba Kabir yusuf</h3>
+                        <p class="leader-title">Executive Governor of Kano State</p>
+                        <div class="leader-info">
+                            <p>Dedicated to the development of Kano State through infrastructure, education, healthcare, and economic empowerment programs.</p>
+                        </div>
+                    </div>
+                    <div class="leader-card">
+                        <div class="leader-image">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <h3 class="leader-name">Hon. Sa'adatu Salisu Soja</h3>
+                        <p class="leader-title">Executive Chairperson, Tudun Wada LGA</p>
+                        <div class="leader-info">
+                            <p>Committed to grassroots development, community empowerment, and ensuring quality service delivery to all residents of Tudun Wada LGA.</p>
+               
