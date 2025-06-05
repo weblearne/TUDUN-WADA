@@ -1,0 +1,1053 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery - Tudun Wada Dankadai Local Government Area</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --success: #27ae60;
+            --warning: #f39c12;
+            --info: #17a2b8;
+            --white: #ffffff;
+            --light: #f8f9fa;
+            --dark: #343a40;
+            --text: #2c3e50;
+            --border: #dee2e6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: linear-gradient(135deg, rgba(44, 62, 80, 0.1) 0%, rgba(52, 152, 219, 0.1) 100%);
+            min-height: 100vh;
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            color: var(--white);
+            text-decoration: none;
+        }
+
+        .nav-logo img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+        }
+
+        .nav-logo h1 {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-menu a {
+            color: var(--white);
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: var(--white);
+            padding: 60px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="1" fill="rgba(255,255,255,0.1)"/></svg>') repeat;
+            animation: float 20s infinite linear;
+        }
+
+        @keyframes float {
+            0% { transform: translateX(-50px) translateY(-50px); }
+            100% { transform: translateX(50px) translateY(50px); }
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .header p {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Gallery Filter */
+        .gallery-filter {
+            padding: 40px 0;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .filter-btn {
+            padding: 12px 25px;
+            background: var(--white);
+            color: var(--text);
+            border: 2px solid var(--border);
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--primary);
+            color: var(--white);
+            border-color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(44, 62, 80, 0.3);
+        }
+
+        /* Gallery Grid */
+        .gallery-section {
+            padding: 60px 0;
+            background: rgba(248, 249, 250, 0.7);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .gallery-item {
+            background: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .gallery-image {
+            position: relative;
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .gallery-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-image img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(44, 62, 80, 0.8), rgba(52, 152, 219, 0.8));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .overlay-icon {
+            font-size: 3rem;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .gallery-content {
+            padding: 25px;
+        }
+
+        .gallery-content h3 {
+            color: var(--primary);
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .gallery-content p {
+            color: #666;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .gallery-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid var(--border);
+        }
+
+        .gallery-date {
+            color: #999;
+            font-size: 0.9rem;
+        }
+
+        .gallery-category {
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .category-projects {
+            background: rgba(52, 152, 219, 0.1);
+            color: var(--secondary);
+        }
+
+        .category-events {
+            background: rgba(39, 174, 96, 0.1);
+            color: var(--success);
+        }
+
+        .category-services {
+            background: rgba(243, 156, 18, 0.1);
+            color: var(--warning);
+        }
+
+        .category-leadership {
+            background: rgba(231, 76, 60, 0.1);
+            color: var(--accent);
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            overflow: auto;
+        }
+
+        .modal-content {
+            position: relative;
+            background: var(--white);
+            margin: 5% auto;
+            padding: 0;
+            width: 90%;
+            max-width: 800px;
+            border-radius: 15px;
+            overflow: hidden;
+            animation: modalSlideIn 0.3s ease;
+        }
+
+        @keyframes modalSlideIn {
+            from { opacity: 0; transform: translateY(-50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .modal-header {
+            position: relative;
+            height: 400px;
+            overflow: hidden;
+        }
+
+        .modal-header img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            color: var(--white);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .modal-close:hover {
+            background: var(--accent);
+            transform: scale(1.1);
+        }
+
+        .modal-body {
+            padding: 30px;
+        }
+
+        .modal-body h2 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 2rem;
+        }
+
+        .modal-body p {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        /* Statistics Section */
+        .stats-section {
+            padding: 60px 0;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: var(--white);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            text-align: center;
+        }
+
+        .stat-item {
+            padding: 30px;
+            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: var(--white);
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        /* Footer */
+        .footer {
+            background: linear-gradient(135deg, var(--primary) 0%, #34495e 100%);
+            color: var(--white);
+            padding: 50px 0 20px;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 20px;
+            color: var(--white);
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--white);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: var(--secondary);
+            transform: translateY(-2px);
+        }
+
+        .bottom-footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Scroll to top button */
+        .scroll-top-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            color: var(--white);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 999;
+        }
+
+        .scroll-top-btn.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-top-btn:hover {
+            background: var(--secondary);
+            transform: translateY(-3px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--primary);
+                flex-direction: column;
+                padding: 20px;
+                gap: 15px;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .header h1 {
+                font-size: 2.5rem;
+            }
+
+            .header p {
+                font-size: 1.1rem;
+            }
+
+            .filter-buttons {
+                gap: 10px;
+            }
+
+            .filter-btn {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+
+            .modal-content {
+                width: 95%;
+                margin: 10% auto;
+            }
+
+            .modal-header {
+                height: 250px;
+            }
+
+            .modal-body {
+                padding: 20px;
+            }
+
+            .nav-logo h1 {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stat-number {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">
+                <img src="asset/logo.jpeg" alt="LGA Logo">
+                <h1>Tudun Wada LGA</h1>
+            </a>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="#" class="active"><i class="fas fa-images"></i> Gallery</a></li>
+                <li><a href="#"><i class="fas fa-info-circle"></i> About</a></li>
+                <li><a href="#"><i class="fas fa-envelope"></i> Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <h1>Gallery</h1>
+                <p>Explore the visual journey of Tudun Wada Local Government Area's development, projects, and community activities</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Gallery Filter -->
+    <section class="gallery-filter">
+        <div class="container">
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="projects">Projects</button>
+                <button class="filter-btn" data-filter="events">Events</button>
+                <button class="filter-btn" data-filter="services">Services</button>
+                <button class="filter-btn" data-filter="leadership">Leadership</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery-section">
+        <div class="container">
+            <div class="gallery-grid" id="galleryGrid">
+                <!-- Projects -->
+                <div class="gallery-item" data-category="projects">
+                    <div class="gallery-image">
+                        <img src="https://via.placeholder.com/400x250/3498db/ffffff?text=Water+Project" alt="Water Project">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-eye overlay-icon"></i>
+                        </div>
+                    </div>
+                    <div class="gallery-content">
+                        <h3>Community Water Project</h3>
+                        <p>A comprehensive water supply project providing clean drinking water to over 5,000 residents across rural communities.</p>
+                        <div class="gallery-meta">
+                            <span class="gallery-date">March 2025</span>
+                            <span class="gallery-category category-projects">Projects</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="projects">
+                    <div class="gallery-image">
+                        <img src="https://via.placeholder.com/400x250/27ae60/ffffff?text=Road+Construction" alt="Road Construction">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-eye overlay-icon"></i>
+                        </div>
+                    </div>
+                    <div class="gallery-content">
+                        <h3>Road Infrastructure Development</h3>
+                        <p>Major road rehabilitation connecting key communities, improving transportation and economic activities.</p>
+                        <div class="gallery-meta">
+                            <span class="gallery-date">February 2025</span>
+                            <span class="gallery-category category-projects">Projects</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="projects">
+                    <div class="gallery-image">
+                        <img src="https://via.placeholder.com/400x250/e74c3c/ffffff?text=Health+Center" alt="Health Center">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-eye overlay-icon"></i>
+                        </div>
+                    </div>
+                    <div class="gallery-content">
+                        <h3>Primary Health Care Center</h3>
+                        <p>Modern healthcare facility equipped with essential medical equipment and qualified healthcare personnel.</p>
+                        <div class="gallery-meta">
+                            <span class="gallery-date">January 2025</span>
+                            <span class="gallery-category category-projects">Projects</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Events -->
+                <div class="gallery-item" data-category="events">
+                    <div class="gallery-image">
+                        <img src="https://via.placeholder.com/400x250/f39c12/ffffff?text=Community+Meeting" alt="Community Meeting">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-eye overlay-icon"></i>
+                        </div>
+                    </div>
+                    <div class="gallery-content">
+                        <h3>Town Hall Meeting</h3>
+                        <p>Monthly community engagement session where residents discuss local issues and development priorities.</p>
+                        <div class="gallery-meta">
+                            <span class="gallery-date">May 2025</span>
+                            <span class="gallery-category category-events">Events</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="events">
+                    <div class="gallery-image">
+                        <img src="https://via.placeholder.com/400x250/9b59b6/ffffff?text=Health+Campaign" alt="Health Campaign">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-eye overlay-icon"></i>
+                        </div>
+                    </div>
+                    <div class="gallery-content">
+                        <h3>Health Awareness Campaign</h3>
+                        <p>Community health education program focusing on preventive healthcare and vaccination drives.</p>
+                        <div class="gallery-meta">
+                            <span class="gallery-date">April 2025</span>
+                            <span class="gallery-category category-events">Events</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Services -->
+                <div class="gallery-item" data-category="services">
+                    <div class="gallery-image">
+                        <img src="https://via.placeholder.com/400x250/34495e/ffffff?text=Registration+Office" alt="Registration Office">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-eye overlay-icon"></i>
+                        </div>
+                    </div>
+                    <div class="gallery-content">
+                        <h3>Birth & Death Registration</h3>
+                        <p>Modernized registration office providing efficient services for vital records and official documentation.</p>
+                        <div class="gallery-meta">
+                            <span class="gallery-date">Ongoing</span>
+                            <span class="gallery-category category-services">Services</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="services">
+                    <div class="gallery-image">
+                        <img src="https://via.placeholder.com/400x250/16a085/ffffff?text=Tax+Office" alt="Tax Office">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-eye overlay-icon"></i>
+                        </div>
+                    </div>
+                    <div class="gallery-content">
+                        <h3>Tax Collection Center</h3>
+                        <p>Digital tax payment platform and customer service center for all local government revenue services.</p>
+                        <div class="gallery-meta">
+                            <span class="gallery-date">Ongoing</span>
+                            <span class="gallery-category category-services">Services</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Leadership -->
+                <div class="gallery-item" data-category="leadership">
+                    <div class="gallery-image">
+                        <img src="https://via.placeholder.com/400x250/2c3e50/ffffff?text=Executive+Meeting" alt="Executive Meeting">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-eye overlay-icon"></i>
+                        </div>
+                    </div>
+                    <div class="gallery-content">
+                        <h3>Executive Council Meeting</h3>
+                        <p>Monthly strategic planning session with department heads and community representatives.</p>
+                        <div class="gallery-meta">
+                            <span class="gallery-date">May 2025</span>
+                            <span class="gallery-category category-leadership">Leadership</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="leadership">
+                    <div class="gallery-image">
+                        <img src="https://via.placeholder.com/400x250/8e44ad/ffffff?text=Award+Ceremony" alt="Award Ceremony">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-eye overlay-icon"></i>
+                        </div>
+                    </div>
+                    <div class="gallery-content">
+                        <h3>Excellence Awards Ceremony</h3>
+                        <p>Annual recognition event celebrating outstanding contributions to community development and public service.</p>
+                        <div class="gallery-meta">
+                            <span class="gallery-date">March 2025</span>
+                            <span class="gallery-category category-leadership">Leadership</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number" data-count="150">0</div>
+                    <div class="stat-label">Completed Projects</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-count="75">0</div>
+                    <div class="stat-label">Community Events</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-count="25000">0</div>
+                    <div class="stat-label">Citizens Served</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-count="50">0</div>
+                    <div class="stat-label">Government Services</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-section">
+                    <h3>About Tudun Wada LGA</h3>
+                    <p>Tudun Wada Dankadai Local Government Area is committed to fostering sustainable development, community empowerment, and quality service delivery for all residents.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Services</a></li>
+                        <li><a href="#">Projects</a></li>
+                        <li><a href="#">Gallery</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Tudun Wada LGA Secretariat, Kano State, Nigeria</p>
+                    <p><i class="fas fa-phone"></i> +234-XXX-XXXX-XXX</p>
+                    <p><i class="fas fa-envelope"></i> info@tudunwada.gov.ng</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="bottom-footer">
+                <p>&copy; 2025 Tudun Wada Dankadai Local Government Area. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal -->
+    <div id="imageModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <img id="modalImage" src="" alt="">
+                <button class="modal-close" onclick="closeModal()">&times;</button>
+            </div>
+                      <div class="modal-body">
+                <h2 id="modalTitle"></h2>
+                <p id="modalDescription"></p>
+                <div class="gallery-meta">
+                    <span id="modalDate" class="gallery-date"></span>
+                    <span id="modalCategory" class="gallery-category"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scroll to top button -->
+    <button class="scroll-top-btn" id="scrollTopBtn" onclick="scrollToTop()">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+    // Mobile Menu Toggle
+    function toggleMobileMenu() {
+        const navMenu = document.getElementById('navMenu');
+        navMenu.classList.toggle('active');
+    }
+
+    // Gallery Filter Functionality
+    document.addEventListener('DOMContentLoaded', function() {
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const galleryItems = document.querySelectorAll('.gallery-item');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                this.classList.add('active');
+                
+                const filterValue = this.getAttribute('data-filter');
+                
+                galleryItems.forEach(item => {
+                    if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Gallery Modal Functionality
+        const modalGalleryItems = document.querySelectorAll('.gallery-item'); // Changed variable name
+        const modal = document.getElementById('imageModal');
+        const modalImg = document.getElementById('modalImage');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalDescription = document.getElementById('modalDescription');
+        const modalDate = document.getElementById('modalDate');
+        const modalCategory = document.getElementById('modalCategory');
+
+        modalGalleryItems.forEach(item => {
+            item.addEventListener('click', function() {
+                const imgSrc = this.querySelector('img').src;
+                const title = this.querySelector('h3').textContent;
+                const description = this.querySelector('p').textContent;
+                const date = this.querySelector('.gallery-date').textContent;
+                const category = this.querySelector('.gallery-category').textContent;
+                const categoryClass = this.querySelector('.gallery-category').className.split(' ')[1];
+                
+                modalImg.src = imgSrc;
+                modalTitle.textContent = title;
+                modalDescription.textContent = description;
+                modalDate.textContent = date;
+                modalCategory.textContent = category;
+                modalCategory.className = 'gallery-category ' + categoryClass;
+                
+                modal.style.display = 'block';
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        // Close modal when clicking outside the content
+        window.addEventListener('click', function(event) {
+            if (event.target === modal) {
+                closeModal();
+            }
+        });
+
+        // Scroll to top button functionality
+        const scrollTopBtn = document.getElementById('scrollTopBtn');
+        
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300) {
+                scrollTopBtn.classList.add('visible');
+            } else {
+                scrollTopBtn.classList.remove('visible');
+            }
+        });
+
+        // Animate statistics counters
+        const statItems = document.querySelectorAll('.stat-item');
+        
+        function animateCounters() {
+            statItems.forEach(item => {
+                const target = +item.querySelector('.stat-number').getAttribute('data-count');
+                const duration = 2000; // Animation duration in ms
+                const start = 0;
+                const increment = target / (duration / 16); // 60fps
+                let current = start;
+                const element = item.querySelector('.stat-number');
+                
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        clearInterval(timer);
+                        current = target;
+                    }
+                    element.textContent = Math.floor(current).toLocaleString();
+                }, 16);
+            });
+        }
+        
+        // Intersection Observer for counter animation
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounters();
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+        
+        document.querySelector('.stats-section').querySelector('.container').style.opacity = '0';
+        observer.observe(document.querySelector('.stats-section'));
+        
+        // Fade in stats section when visible
+        const statsSection = document.querySelector('.stats-section');
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.querySelector('.container').style.transition = 'opacity 1s ease';
+                    entry.target.querySelector('.container').style.opacity = '1';
+                }
+            });
+        });
+        
+        statsObserver.observe(statsSection);
+    });
+
+    function closeModal() {
+        document.getElementById('imageModal').style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+
+    function scrollToTop() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    }
+</script>
+</body>
+</html>
